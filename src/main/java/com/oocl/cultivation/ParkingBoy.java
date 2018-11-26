@@ -12,20 +12,12 @@ public class ParkingBoy {
     }
 
     public ParkingLot pickParkingLot(){
-        if(parkingLots.size() == 1){
-            if (parkingLots.get(0).getCurrentParkingSpace() > 0){
-                return parkingLots.get(0);
-            }else{
-                return null;
+        for(ParkingLot parkingLot : parkingLots){
+            if (parkingLot.getCurrentParkingSpace() > 0){
+                return parkingLot;
             }
-        }else{
-            for(ParkingLot parkingLot : parkingLots){
-                if (parkingLot.getCurrentParkingSpace() > 0){
-                    return parkingLot;
-                }
-            }
-            return null;
         }
+        return null;
     }
 
     public ParkingTicket park(Car car) {
