@@ -8,31 +8,28 @@ public class SuperSmartParkingBoy extends ParkingBoy{
     }
 
     @Override
-    public ParkingLot pickParkingLot(){
-        if (parkingLots.size() == 0){return null;}
-        if(parkingLots.size() == 1){
-            if (parkingLots.get(0).getCurrentParkingSpace() > 0){
-                return parkingLots.get(0);
-            }else{
-                return null;
+    public ParkingLot pickParkingLot() {
+        ParkingLot parkingLotWithMoreSpaceRate = null;
+        for (ParkingLot parkingLot : parkingLots) {
+            if (parkingLot.getCurrentParkingSpaceRate() > 0) {
+                parkingLotWithMoreSpaceRate = compareParkingLotSpaceRate(parkingLotWithMoreSpaceRate, parkingLot);
             }
-        }else{
-            ParkingLot parkingLotWithMoreSpaceRate = null;
-            for(ParkingLot parkingLot : parkingLots){
-                if (parkingLot.getCurrentParkingSpaceRate() > 0){
-                    if (parkingLotWithMoreSpaceRate == null){
-                        parkingLotWithMoreSpaceRate = parkingLot;
-                    }else{
-                        if (parkingLot.getCurrentParkingSpaceRate() > parkingLotWithMoreSpaceRate.getCurrentParkingSpaceRate()){
-                            parkingLotWithMoreSpaceRate = parkingLot;
-                        }
-                    }
-                }
-            }
-            if (parkingLotWithMoreSpaceRate == null) {
-                return null;
+        }
+        if (parkingLotWithMoreSpaceRate == null) {
+            return null;
+        } else {
+            return parkingLotWithMoreSpaceRate;
+        }
+    }
+
+    private ParkingLot compareParkingLotSpaceRate(ParkingLot parkingLotWithMoreSpace, ParkingLot currentParkingLot){
+        if (parkingLotWithMoreSpace == null) {
+            return currentParkingLot;
+        } else {
+            if (currentParkingLot.getCurrentParkingSpaceRate() > parkingLotWithMoreSpace.getCurrentParkingSpaceRate()) {
+                return currentParkingLot;
             }else{
-                return parkingLotWithMoreSpaceRate;
+                return parkingLotWithMoreSpace;
             }
         }
     }
