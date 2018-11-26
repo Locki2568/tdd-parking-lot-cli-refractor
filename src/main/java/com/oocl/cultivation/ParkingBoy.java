@@ -35,7 +35,7 @@ public class ParkingBoy {
     public Car fetch(ParkingTicket ticket) {
         // TODO: Please implement the method
         if(ticket != null) {
-            if (ticket.getParkingLot() != null && ticket.getParkingLot().isParkingLotContainsCar(ticket)) {
+            if (ifTicketIsValid(ticket)) {
                 ParkingLot parkingLot = ticket.getParkingLot();
                 lastErrorMessage = null;
                 return parkingLot.pickCar(ticket);
@@ -46,6 +46,14 @@ public class ParkingBoy {
         }else{
             lastErrorMessage = "Please provide your parking ticket.";
             return null;
+        }
+    }
+
+    private boolean ifTicketIsValid(ParkingTicket ticket){
+        if (ticket.getParkingLot() == null){
+            return false;
+        }else{
+            return ticket.getParkingLot().isParkingLotContainsCar(ticket);
         }
     }
 
