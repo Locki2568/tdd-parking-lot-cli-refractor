@@ -260,7 +260,7 @@ public class ParkingLotManagerTest {
         Car expectedCar = new Car();
         parkingLotManager.toldParkingBoyToPark(superSmartParkingBoy, expectedCar);
 
-        assertEquals("The parking lot is full.", parkingLotManager.getLastErrorMessage());
+        assertEquals("The parking lot is full.", parkingLotManager.getErrorMessageFromParkingBoy(superSmartParkingBoy));
     }
     //Story 6
     //Given: ParkingLotManager,Super smart parking boy, a parking lot, a wrong ticket
@@ -286,7 +286,7 @@ public class ParkingLotManagerTest {
         ParkingTicket wrongTicket = new ParkingTicket();
         parkingLotManager.toldParkingBoyToFetchCar(superSmartParkingBoy, wrongTicket);
 
-        assertEquals("Unrecognized parking ticket.", parkingLotManager.getLastErrorMessage());
+        assertEquals("Unrecognized parking ticket.", parkingLotManager.getErrorMessageFromParkingBoy(superSmartParkingBoy));
     }
 
     //Story 6
@@ -312,6 +312,6 @@ public class ParkingLotManagerTest {
         parkingLotManager.toldParkingBoyToPark(superSmartParkingBoy, expectedCar);
         parkingLotManager.toldParkingBoyToFetchCar(superSmartParkingBoy, null);
 
-        assertEquals("Please provide your parking ticket.", parkingLotManager.getLastErrorMessage());
+        assertEquals("Please provide your parking ticket.", parkingLotManager.getErrorMessageFromParkingBoy(superSmartParkingBoy));
     }
 }

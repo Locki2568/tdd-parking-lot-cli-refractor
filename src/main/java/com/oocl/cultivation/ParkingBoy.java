@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class ParkingBoy {
 
     protected final ArrayList<ParkingLot> parkingLots;
-    protected static String lastErrorMessage;
+    protected String lastErrorMessage;
 
     public ParkingBoy(ArrayList<ParkingLot> parkingLots) {
         this.parkingLots = parkingLots;

@@ -25,4 +25,8 @@ public class ParkingLotManager extends ParkingBoy{
     private boolean checkIfParkingBoyUnderCommand(ParkingBoy parkingBoy){
         return this.parkingBoys.contains(parkingBoy);
     }
+
+    public String getErrorMessageFromParkingBoy(ParkingBoy parkingBoy){
+        return parkingBoy.getLastErrorMessage();
+    }
 }
