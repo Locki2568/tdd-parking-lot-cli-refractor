@@ -11,7 +11,7 @@ public class ParkingBoy {
         this.parkingLots = parkingLots;
     }
 
-    public ParkingLot pickParkingLot(){
+    private ParkingLot pickParkingLot(){
         for(ParkingLot parkingLot : parkingLots){
             if (parkingLot.getCurrentParkingSpace() > 0){
                 return parkingLot;
