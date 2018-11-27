@@ -34,7 +34,7 @@ public class ParkingBoy {
 
     public Car fetch(ParkingTicket ticket) {
         // TODO: Please implement the method
-        if(ticket != null) {
+        if(!checkTicketIsNull(ticket)) {
             if (ifTicketIsValid(ticket)) {
                 ParkingLot parkingLot = ticket.getParkingLot();
                 lastErrorMessage = null;
@@ -44,8 +44,16 @@ public class ParkingBoy {
                 return null;
             }
         }else{
-            lastErrorMessage = "Please provide your parking ticket.";
             return null;
+        }
+    }
+
+    private boolean checkTicketIsNull(ParkingTicket ticket){
+        if(ticket != null) {
+            return false;
+        }else{
+            lastErrorMessage = "Please provide your parking ticket.";
+            return true;
         }
     }
 
